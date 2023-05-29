@@ -1,6 +1,7 @@
 package bidahochi.foxdrives;
 
 import bidahochi.foxdrives.entities.EntityCar;
+import bidahochi.foxdrives.entities.EntityGilligPhantom;
 import bidahochi.foxdrives.entities.EntityToyotaPickup1992;
 import bidahochi.foxdrives.util.ItemCar;
 import net.minecraft.init.Blocks;
@@ -14,6 +15,13 @@ public enum  EnumCars {
             new ItemStack(Blocks.stone), new ItemStack(Blocks.glass_pane),new ItemStack(Blocks.stone),
             new ItemStack(Blocks.iron_door), new ItemStack(Blocks.oak_stairs),new ItemStack(Blocks.iron_door),
             new ItemStack(Blocks.stone), new ItemStack(Blocks.glass_pane),new ItemStack(Blocks.stone)
+    }),
+
+    gilligPhantom(EntityGilligPhantom.class, genItem(EntityGilligPhantom.class),
+            new ItemStack[]{
+        new ItemStack(Blocks.stone), new ItemStack(Blocks.glass_pane),new ItemStack(Blocks.stone),
+                new ItemStack(Blocks.iron_door), new ItemStack(Blocks.oak_stairs),new ItemStack(Blocks.iron_door),
+                new ItemStack(Blocks.stone), new ItemStack(Blocks.glass_pane),new ItemStack(Blocks.stone)
     })
     /* EXAMPLE ENTRY:
 

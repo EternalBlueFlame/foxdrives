@@ -1,16 +1,16 @@
 package bidahochi.foxdrives.entities;
 
+import bidahochi.foxdrives.models.ModelGilligPhantom;
 import bidahochi.foxdrives.models.ToyotaPickup1992;
 import fexcraft.tmt.slim.ModelBase;
 import net.minecraft.world.World;
 
+public class EntityGilligPhantom extends EntityCar {
 
-public class EntityToyotaPickup1992 extends EntityCarChest {
-
-    public EntityToyotaPickup1992(World world, double xPos, double yPos, double zPos) {
+    public EntityGilligPhantom(World world, double xPos, double yPos, double zPos) {
         super(world, xPos, yPos, zPos);
     }
-    public EntityToyotaPickup1992(World p_i1685_1_) {
+    public EntityGilligPhantom(World p_i1685_1_) {
         super(p_i1685_1_);
     }
 
@@ -20,7 +20,7 @@ public class EntityToyotaPickup1992 extends EntityCarChest {
      */
     @Override
     public ModelBase getModel() {
-        return new ToyotaPickup1992();
+        return new ModelGilligPhantom();
     }
 
     /**
@@ -30,7 +30,7 @@ public class EntityToyotaPickup1992 extends EntityCarChest {
      */
     @Override
     public String[] getSkins() {
-        return new String[]{"textures/toyota/JC1992BoiodaPickup"};
+        return new String[]{"textures/gillig/GILLIG_BUSSIN_generic"};
     }
 
     /**
@@ -54,7 +54,7 @@ public class EntityToyotaPickup1992 extends EntityCarChest {
      * Returns the rider offset from the center of the entity, in blocks.
      */
     @Override
-    public float[] getRiderOffset(){return new float[]{-0.3f,-0.05f,0.25f};}
+    public float[] getRiderOffset(){return new float[]{-1.5f,-0.0f,0.3f};}
 
     /**
      * Returns the amount to scale the player, MC default is 1, TC default is 0.65f
@@ -63,5 +63,4 @@ public class EntityToyotaPickup1992 extends EntityCarChest {
     public float getRiderScale() {
         return 0.65f;
     }
-
 }
