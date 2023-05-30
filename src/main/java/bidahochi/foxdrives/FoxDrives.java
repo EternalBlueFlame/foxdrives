@@ -62,6 +62,7 @@ public class FoxDrives {
         // the import from being loaded on server and crashing.
         if(event.getSide().isClient()){
             cpw.mods.fml.client.registry.ClientRegistry.registerKeyBinding(bidahochi.foxdrives.util.ClientProxy.KeyInventory);
+            cpw.mods.fml.client.registry.ClientRegistry.registerKeyBinding(bidahochi.foxdrives.util.ClientProxy.KeyBrake);
 
         }
         //init networking stuff

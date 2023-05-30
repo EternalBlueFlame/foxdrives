@@ -36,8 +36,9 @@ public abstract class EntityCar extends EntityAnimal {
     public float health =20, roll=0;
     public double transportX=0,transportY=0,transportZ=0;
     public int tickOffset=0;
-    public byte running=0;
+    public byte running=0, drift=0;
     public float velocity=0;
+    public float driftStartTick=0;
 
     /**
      * client side entity spawn
@@ -275,6 +276,10 @@ public abstract class EntityCar extends EntityAnimal {
         if (!worldObj.isRemote) {
             if(key==1){
                 this.dataWatcher.updateObject(17, running==(byte)1?(byte)0:(byte)1);
+                return true;
+            } else if (key==3){
+                drift=1;
+                return true;
             }
         }
         return false;
@@ -289,6 +294,9 @@ public abstract class EntityCar extends EntityAnimal {
             EntityLivingBase rider = ((EntityLivingBase) this.riddenByEntity);
             if (rider != null) {
                 velocity += rider.moveForward * this.getAccelSpeed();
+                if(rider.moveForward==0){
+                    drift=0;
+                }
             }
             if (running != dataWatcher.getWatchableObjectByte(17)) {
                 running = dataWatcher.getWatchableObjectByte(17);
@@ -312,10 +320,22 @@ public abstract class EntityCar extends EntityAnimal {
                     rotationYaw -= (rider.moveStrafing * turnStrength(false));
                 }
                 dataWatcher.updateObject(21, rotationYaw);
+                driftStartTick=ticksExisted;
+                System.out.println(drift + " : " + rider.moveStrafing);
             }
 
             this.stepHeight = canClimbFullBlocks()?1.0f:canClimbSlabs()?0.5f:0.0f;
             moveEntityWithHeading(0, velocity);
+            if(drift==1) {
+                if (velocity <= 0.0F) {
+                    rotationYaw += (rider.moveStrafing * turnStrength(true)*0.5);
+                } else {
+                    rotationYaw -= (rider.moveStrafing * turnStrength(false)*0.5);
+                }
+                if (ticksExisted > driftStartTick + 40) {
+                    drift = 0;
+                }
+            }
 
             double d0 = 0.25D;
             List list = worldObj.getEntitiesWithinAABBExcludingEntity(this, getBoundingBox().expand(d0, d0, d0));

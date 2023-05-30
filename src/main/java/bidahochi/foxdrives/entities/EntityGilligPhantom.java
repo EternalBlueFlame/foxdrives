@@ -38,7 +38,7 @@ public class EntityGilligPhantom extends EntityCar {
      */
     @Override
     public float getMoveSpeed() {
-        return 0.2f;
+        return 30f;
     }
 
     /**

@@ -31,6 +31,9 @@ public class EventManager {
             } else {
                 FMLCommonHandler.instance().showGuiScreen(new GuiCar((EntityCar) Minecraft.getMinecraft().thePlayer.ridingEntity));
             }
+        } else if(bidahochi.foxdrives.util.ClientProxy.KeyBrake.isPressed()){
+            FoxDrives.interactChannel.sendToServer(new PacketInteract(
+                    3,Minecraft.getMinecraft().thePlayer.ridingEntity.getEntityId()));
         }
     }
 

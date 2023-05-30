@@ -38,7 +38,7 @@ public class EntityToyotaPickup1992 extends EntityCarChest {
      */
     @Override
     public float getMoveSpeed() {
-        return 0.2f;
+        return 45f;
     }
 
     /**
